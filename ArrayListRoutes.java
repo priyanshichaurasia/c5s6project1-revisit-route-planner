@@ -20,7 +20,7 @@ public class ArrayListRoutes{
             String line = br.readLine();
             while(line!=null){
                 String [] output = line.split(",");
-                Route r1 = new Route(output[0],output[1],Double.parseDouble(output[2]),output[3],output[4]);
+                Route r1 = new Route(output[0],output[1],Integer.parseInt(output[2]),output[3],output[4]);
                 routeList.add(r1);
                 line=br.readLine();
                 }
@@ -28,5 +28,13 @@ public class ArrayListRoutes{
             catch(IOException ex){
                 System.out.println(ex.getMessage());
             }
+    }
+
+    public void displayRoute(){
+        System.out.format("%20s %20s %20s %20s %20s" ,"From" , "To" , "Distance in km", "Travel Time", "Typical Airfare");
+        System.out.println();
+        Consumer<Route> display = (d)->System.out.println(d);
+        routeList.forEach(display);
+        
     }
 }
