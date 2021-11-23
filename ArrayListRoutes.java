@@ -86,8 +86,18 @@ public class ArrayListRoutes{
             list = routeList.stream().filter(check).collect(Collectors.toList());
             list.forEach(i->System.out.println(i));
         }
+        else{
+            System.out.println("Sorry No Flights Are Available for this Routes");
+        }
 
-        Optional<Route> 
+        Optional<Route> interCheck = routeList.stream().filter(p->p.getFromCity.equalsIgnoreCase(sourceCity)).findAny();
+        if(listFilter.isPresent()){
+            
+        }
+
+
+
+    }
 
 
 
