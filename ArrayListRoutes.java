@@ -40,6 +40,7 @@ public class ArrayListRoutes{
     }
 
     public List<Route> showDirectFlights(String sourceCity){
+
         List<Route> filterList = new ArrayList<Route>();
     
         Optional<Route> displayFilter = routeList.stream().filter(p->p.getFromCity().equalsIgnoreCase(sourceCity)).findAny();
@@ -48,6 +49,9 @@ public class ArrayListRoutes{
            System.out.print("\nTo From Distance in km Travel Time Typical Airfare\n");
            Consumer<Route> display = (d)->System.out.println(d);
            filterList.forEach(display);
+        }
+        else{
+            System.out.println("We are sorry. At this point of time, we do not have any information on flights originating from "+sourceCity);
         }
         return filterList;
     }
