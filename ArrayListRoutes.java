@@ -69,6 +69,12 @@ public class ArrayListRoutes{
         List<Route> sortedList = filterList.stream().sorted(sort).collect(Collectors.toList());
         System.out.print("\nTo From Distance in km Travel Time Typical Airfare\n");
         sortedList.forEach(i->System.out.println(i));
+
+    }
+
+    public void showAllConnections(String sourceCity, String distinationCity){
+
         
+
     }
 }
