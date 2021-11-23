@@ -89,7 +89,7 @@ public class ArrayListRoutes{
                 for(Route r: routeList){
                     if(sourceCity.equalsIgnoreCase(r.getFromCity().trim())){
                         String temp = r.getFromCity();
-                        if(temp.equalsIgnoreCase(destinationCity) && destinationCity.equalsIgnoreCase(r.getToCity().trim())){
+                        if(temp.equalsIgnoreCase(r.getFromCity().trim()) && destinationCity.equalsIgnoreCase(r.getToCity().trim())){
                             showAllConnections(sourceCity, temp);
                             showAllConnections(temp, destinationCity);
                             System.out.println();
