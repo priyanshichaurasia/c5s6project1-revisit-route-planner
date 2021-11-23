@@ -79,26 +79,30 @@ public class ArrayListRoutes{
     private void showAllConnections(String sourceCity, String destinationCity){
 
         List<Route> list = new ArrayList<Route>();
-        Optional<Route> listFilter = routeList.stream().filter(p->p.getFromCity().equalsIgnoreCase(sourceCity) && p.getToCity().equalsIgnoreCase(destinationCity)).findAny();
-        if(listFilter.isPresent()){
-            list = routeList.stream().filter(p->p.getFromCity().equalsIgnoreCase(sourceCity) && p.getToCity().equalsIgnoreCase(destinationCity)).collect(Collectors.toList());
-            list.forEach(display);
-        }
-        else{
-            System.out.println("Sorry No Flights Are Available for this Routes");
-        }
-        String temp=" ";
-        for(Route r: routeList){
-            if(sourceCity.equalsIgnoreCase(r.getFromCity())){
-                temp = r.getFromCity();
-            }
-            if(temp.equalsIgnoreCase(destinationCity) && destinationCity.equalsIgnoreCase(r.getToCity())){
-                showAllConnections(sourceCity, temp);
-                showAllConnections(temp, destinationCity);
-                System.out.println();
-            }
-        }
+        Optional<Route> fromCityList = routeList.stream().filter(p->p.getFromCity().equalsIgnoreCase(sourceCity)).findAny();
 
-
+            if(fromCityList.isPresent()){
+                Optional<Route> listFilter = routeList.stream().filter(p->p.getFromCity().equalsIgnoreCase(sourceCity) && p.getToCity().equalsIgnoreCase(destinationCity)).findAny();
+                if(listFilter.isPresent()){
+                list = routeList.stream().filter(p->p.getFromCity().equalsIgnoreCase(sourceCity) && p.getToCity().equalsIgnoreCase(destinationCity)).collect(Collectors.toList());
+                list.forEach(display);
+                }
+                else{
+                    String temp=" ";
+                    for(Route r: routeList){
+                        if(sourceCity.equalsIgnoreCase(r.getFromCity())){
+                            temp = r.getFromCity();
+                        }
+                        if(temp.equalsIgnoreCase(destinationCity) && destinationCity.equalsIgnoreCase(r.getToCity())){
+                            showAllConnections(sourceCity, temp);
+                            showAllConnections(temp, destinationCity);
+                            System.out.println();
+                        }
+                    }
+                }
+            }
+            else{
+                System.out.println("Sorry No Flights Are Available for this Routes");
+            }
     }
 }
