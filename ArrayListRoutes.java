@@ -71,17 +71,25 @@ public class ArrayListRoutes{
 
     }
 
-    public void showAllConnections(String sourceCity, String distinationCity){
+    public void showAllFlights(String sourceCity, String destinationCity){
 
-        List<Route> fromList = new ArrayList<Route>();
-        Predicate<Route> check =(c)->(p->p.getFromCity().equalsIgnoreCase(sourceCity) && p.getToCity().equalsIgnoreCase(distinationCity));
-        Optional<Route> fromListFilter = routeList.stream().filter(check)findAny();
-        if(fromListFilter.isPresent()){
-            fromListFilter = routeList.stream().filter(check).collect(Collectors.toList());
+        System.out.print("\nFrom To Distance in km Travel Time Typical Airfare\n");
+        showAllConnections(sourceCity, destinationCity);
+    }
+
+    private void showAllConnections(String sourceCity, String destinationCity){
+
+        List<Route> list = new ArrayList<Route>();
+        Predicate<Route> check =(c)->(p->p.getFromCity().equalsIgnoreCase(sourceCity) && p.getToCity().equalsIgnoreCase(destinationCity));
+        Optional<Route> listFilter = routeList.stream().filter(check)findAny();
+        if(listFilter.isPresent()){
+            list = routeList.stream().filter(check).collect(Collectors.toList());
+            list.forEach(i->System.out.println(i));
         }
-        else{
-            System.out.println("We are Sorry there is no flight");
-        }
+
+        Optional<Route> 
+
+
 
     }
 }
