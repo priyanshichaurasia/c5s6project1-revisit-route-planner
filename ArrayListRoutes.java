@@ -85,7 +85,7 @@ public class ArrayListRoutes{
             if(listFilter.isPresent()){
             routeList.stream().filter(p->p.getFromCity().trim().equalsIgnoreCase(sourceCity) && p.getToCity().trim().equalsIgnoreCase(destinationCity)).forEach(display);
             }
-            else{
+            //else{
                 for(Route r: routeList){
                     if(sourceCity.equalsIgnoreCase(r.getFromCity().trim())){
                         String temp = r.getToCity();
@@ -98,7 +98,7 @@ public class ArrayListRoutes{
                         }
                     }
                 }
-            }
+            //}
         }
         else{
             System.out.println("Sorry No Flights Are Available for this Routes");
