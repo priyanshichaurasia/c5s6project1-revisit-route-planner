@@ -55,4 +55,8 @@ public class ArrayListRoutes{
         }
         return filterList;
     }
+
+    public void sortDirectFlights(List<Route> filterList){
+        
+    }
 }
