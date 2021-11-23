@@ -85,10 +85,9 @@ public class ArrayListRoutes{
             if(listFilter.isPresent()){
             routeList.stream().filter(p->p.getFromCity().trim().equalsIgnoreCase(sourceCity) && p.getToCity().trim().equalsIgnoreCase(destinationCity)).forEach(display);
             }
-            //else{
-                for(Route r: routeList){
+            for(Route r: routeList){
                     if(sourceCity.equalsIgnoreCase(r.getFromCity().trim())){
-                        String temp = r.getToCity();
+                        String temp = r.getToCity().trim();
                         for(Route r1: routeList){
                             if(temp.equalsIgnoreCase(r1.getFromCity().trim()) && destinationCity.equalsIgnoreCase(r1.getToCity().trim())){
                                 showAllConnections(sourceCity, temp);
@@ -98,7 +97,6 @@ public class ArrayListRoutes{
                         }
                     }
                 }
-            //}
         }
         else{
             System.out.println("Sorry No Flights Are Available for this Routes");
