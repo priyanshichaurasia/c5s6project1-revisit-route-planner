@@ -78,20 +78,17 @@ public class ArrayListRoutes{
 
     private void showAllConnections(String sourceCity, String destinationCity){
 
-        List<Route> list = new ArrayList<Route>();
         Optional<Route> fromCityList = routeList.stream().filter(p->p.getFromCity().trim().equalsIgnoreCase(sourceCity)).findAny();
 
         if(fromCityList.isPresent()){
             Optional<Route> listFilter = routeList.stream().filter(p->p.getFromCity().trim().equalsIgnoreCase(sourceCity) && p.getToCity().trim().equalsIgnoreCase(destinationCity)).findAny();
             if(listFilter.isPresent()){
-            list = routeList.stream().filter(p->p.getFromCity().trim().equalsIgnoreCase(sourceCity) && p.getToCity().trim().equalsIgnoreCase(destinationCity)).collect(Collectors.toList());
-            list.forEach(display);
+            routeList.stream().filter(p->p.getFromCity().trim().equalsIgnoreCase(sourceCity) && p.getToCity().trim().equalsIgnoreCase(destinationCity)).forEach(display);
             }
             else{
-                String temp=" ";
                 for(Route r: routeList){
                     if(sourceCity.equalsIgnoreCase(r.getFromCity().trim())){
-                        temp = r.getFromCity();
+                        String temp = r.getFromCity();
                         if(temp.equalsIgnoreCase(destinationCity) && destinationCity.equalsIgnoreCase(r.getToCity().trim())){
                             showAllConnections(sourceCity, temp);
                             showAllConnections(temp, destinationCity);
