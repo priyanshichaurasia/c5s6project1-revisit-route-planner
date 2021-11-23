@@ -57,6 +57,18 @@ public class ArrayListRoutes{
     }
 
     public void sortDirectFlights(List<Route> filterList){
+
+        Comparator<Route> sort= (d1,d2)->{
+            if(d1.getFromCity().compareTo(d2.getFromCity())>0)
+                return 1;
+            else
+                return -1;
+
+        };
+
+        List<Route> sortedList = filterList.stream().sorted(sort).collect(Collectors.toList());
+        System.out.print("\nTo From Distance in km Travel Time Typical Airfare\n");
+        sortedList.forEach(i->System.out.println(i));
         
     }
 }

@@ -8,6 +8,7 @@ public class RouteMain{
         ArrayListRoutes alr = new ArrayListRoutes();
         alr.readRouteData(fileName);
         alr.displayRoute();
-        List<Route> filterdis = alr.showDirectFlights("goa");
+        List<Route> filterdis = alr.showDirectFlights("delhi");
+        alr.sortDirectFlights(filterdis);
     }
 }
