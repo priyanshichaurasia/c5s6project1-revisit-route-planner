@@ -8,6 +8,7 @@ import java.util.stream.*;
 public class ArrayListRoutes{
 
     List<Route>  routeList = new ArrayList<Route>();
+    Consumer<Route> display = (d)->System.out.println(d);
 
     public ArrayListRoutes()
     {
@@ -34,7 +35,6 @@ public class ArrayListRoutes{
     public void displayRoute(){
         System.out.print("From To Distance in km Travel Time Typical Airfare");
         System.out.println();
-        Consumer<Route> display = (d)->System.out.println(d);
         routeList.forEach(display);
         
     }
@@ -47,7 +47,6 @@ public class ArrayListRoutes{
         if(displayFilter.isPresent()){
            filterList = routeList.stream().filter(p->p.getFromCity().equalsIgnoreCase(sourceCity)).collect(Collectors.toList());
            System.out.print("\nFrom To Distance in km Travel Time Typical Airfare\n");
-           Consumer<Route> display = (d)->System.out.println(d);
            filterList.forEach(display);
         }
         else{
@@ -80,29 +79,25 @@ public class ArrayListRoutes{
     private void showAllConnections(String sourceCity, String destinationCity){
 
         List<Route> list = new ArrayList<Route>();
-        Predicate<Route> check =(c)->(p->p.getFromCity().equalsIgnoreCase(sourceCity) && p.getToCity().equalsIgnoreCase(destinationCity));
-        Optional<Route> listFilter = routeList.stream().filter(check)findAny();
+        Optional<Route> listFilter = routeList.stream().filter(p->p.getFromCity().equalsIgnoreCase(sourceCity) && p.getToCity().equalsIgnoreCase(destinationCity)).findAny();
         if(listFilter.isPresent()){
-            list = routeList.stream().filter(check).collect(Collectors.toList());
-            list.forEach(i->System.out.println(i));
+            list = routeList.stream().filter(p->p.getFromCity().equalsIgnoreCase(sourceCity) && p.getToCity().equalsIgnoreCase(destinationCity)).collect(Collectors.toList());
+            list.forEach(display);
         }
         else{
             System.out.println("Sorry No Flights Are Available for this Routes");
         }
-        for(int i=0; i<routeList.size();i++){
-            if(sourceCity.equalsIgnoreCase(routeList.getFromCity())){
-                String temp = routeList.getFromCity();
+        String temp=" ";
+        for(Route r: routeList){
+            if(sourceCity.equalsIgnoreCase(r.getFromCity())){
+                temp = r.getFromCity();
             }
-            if(temp.equalsIgnoreCase(destinationCity) && destinationCity.equalsIgnoreCase(routeList.getToCity())){
+            if(temp.equalsIgnoreCase(destinationCity) && destinationCity.equalsIgnoreCase(r.getToCity())){
                 showAllConnections(sourceCity, temp);
                 showAllConnections(temp, destinationCity);
                 System.out.println();
             }
         }
-
-
-    }
-
 
 
     }
