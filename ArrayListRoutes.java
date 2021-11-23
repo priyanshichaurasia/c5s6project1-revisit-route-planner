@@ -1,8 +1,7 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.*;
 import java.util.function.*;
 import java.util.stream.*;
 
@@ -41,12 +40,15 @@ public class ArrayListRoutes{
     }
 
     public List<Route> showDirectFlights(String sourceCity){
-
         List<Route> filterList = new ArrayList<Route>();
-        List<Route> filterList = routeList.stream().filter(p->p.getFromCity().equalsIgnoreCase(sourceCity).findAny().collect(Collectors.toList()));
-        if(filterList.isPresent()){
-            
+    
+        Optional<Route> displayFilter = routeList.stream().filter(p->p.getFromCity().equalsIgnoreCase(sourceCity)).findAny();
+        if(displayFilter.isPresent()){
+           filterList = routeList.stream().filter(p->p.getFromCity().equalsIgnoreCase(sourceCity)).collect(Collectors.toList());
+           System.out.print("\nTo From Distance in km Travel Time Typical Airfare\n");
+           Consumer<Route> display = (d)->System.out.println(d);
+           filterList.forEach(display);
         }
-        
+        return filterList;
     }
 }
