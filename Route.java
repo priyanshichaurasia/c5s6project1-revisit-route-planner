@@ -2,7 +2,7 @@ public class Route{
 
     private String fromCity;
     private String toCity;
-    private int distance;
+    private double distance;
     private String time;
     private String cost;
 
@@ -10,7 +10,7 @@ public class Route{
 
     }
 
-    public Route(String fromCity, String toCity, int distance, String time, String cost){
+    public Route(String fromCity, String toCity, double distance, String time, String cost){
         this.fromCity=fromCity;
         this.toCity=toCity;
         this.distance=distance;
@@ -29,10 +29,10 @@ public class Route{
     public String getToCity(){
         return toCity;
     }
-    public void setDistance(int distance){
+    public void setDistance(double distance){
         this.distance=distance;
     }
-    public int getDistance(){
+    public double getDistance(){
         return distance;
     }
     public void setTime(String time){
@@ -42,7 +42,7 @@ public class Route{
         return time;
     }
     public void setCost(String cost){
-        return cost;
+        this.cost= cost;
     }
     public String getCost(){
         return cost;
