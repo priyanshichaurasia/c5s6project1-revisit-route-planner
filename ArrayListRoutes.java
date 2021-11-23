@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.function.*;
+import java.util.stream.*;
 
 public class ArrayListRoutes{
 
@@ -36,6 +37,16 @@ public class ArrayListRoutes{
         System.out.println();
         Consumer<Route> display = (d)->System.out.println(d);
         routeList.forEach(display);
+        
+    }
+
+    public List<Route> showDirectFlights(String sourceCity){
+
+        List<Route> filterList = new ArrayList<Route>();
+        List<Route> filterList = routeList.stream().filter(p->p.getFromCity().equalsIgnoreCase(sourceCity).findAny().collect(Collectors.toList()));
+        if(filterList.isPresent()){
+            
+        }
         
     }
 }
