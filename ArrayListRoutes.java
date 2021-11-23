@@ -73,6 +73,7 @@ public class ArrayListRoutes{
 
         System.out.print("\nFrom To Distance in km Travel Time Typical Airfare\n");
         showAllConnections(sourceCity, destinationCity);
+        System.out.println();
     }
 
     private void showAllConnections(String sourceCity, String destinationCity){
