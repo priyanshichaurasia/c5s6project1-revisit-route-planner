@@ -89,12 +89,16 @@ public class ArrayListRoutes{
         else{
             System.out.println("Sorry No Flights Are Available for this Routes");
         }
-
-        Optional<Route> interCheck = routeList.stream().filter(p->p.getFromCity.equalsIgnoreCase(sourceCity)).findAny();
-        if(listFilter.isPresent()){
-            
+        for(int i=0; i<routeList.size();i++){
+            if(sourceCity.equalsIgnoreCase(routeList.getFromCity())){
+                String temp = routeList.getFromCity();
+            }
+            if(temp.equalsIgnoreCase(destinationCity) && destinationCity.equalsIgnoreCase(routeList.getToCity())){
+                showAllConnections(sourceCity, temp);
+                showAllConnections(temp, destinationCity);
+                System.out.println();
+            }
         }
-
 
 
     }

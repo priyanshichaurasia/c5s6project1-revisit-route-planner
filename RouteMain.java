@@ -10,5 +10,6 @@ public class RouteMain{
         alr.displayRoute();
         List<Route> filterdis = alr.showDirectFlights("delhi");
         alr.sortDirectFlights(filterdis);
+        alr.showAllFlights("delhi", "london");
     }
 }
