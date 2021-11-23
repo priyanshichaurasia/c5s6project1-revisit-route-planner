@@ -73,5 +73,15 @@ public class ArrayListRoutes{
 
     public void showAllConnections(String sourceCity, String distinationCity){
 
+        List<Route> fromList = new ArrayList<Route>();
+        Predicate<Route> check =(c)->(p->p.getFromCity().equalsIgnoreCase(sourceCity) && p.getToCity().equalsIgnoreCase(distinationCity));
+        Optional<Route> fromListFilter = routeList.stream().filter(check)findAny();
+        if(fromListFilter.isPresent()){
+            fromListFilter = routeList.stream().filter(check).collect(Collectors.toList());
+        }
+        else{
+            System.out.println("We are Sorry there is no flight");
+        }
+
     }
 }
