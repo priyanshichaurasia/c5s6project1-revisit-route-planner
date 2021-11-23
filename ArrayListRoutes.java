@@ -18,7 +18,6 @@ public class ArrayListRoutes{
     public void readRouteData(String fileName){
         try{
             BufferedReader br = new BufferedReader(new FileReader(fileName));
-            br.readLine();
             String line = br.readLine();
             while(line!=null){
                 String [] output = line.split(",");
