@@ -32,7 +32,7 @@ public class ArrayListRoutes{
     }
 
     public void displayRoute(){
-        System.out.print("To From Distance in km Travel Time Typical Airfare");
+        System.out.print("From To Distance in km Travel Time Typical Airfare");
         System.out.println();
         Consumer<Route> display = (d)->System.out.println(d);
         routeList.forEach(display);
@@ -46,7 +46,7 @@ public class ArrayListRoutes{
         Optional<Route> displayFilter = routeList.stream().filter(p->p.getFromCity().equalsIgnoreCase(sourceCity)).findAny();
         if(displayFilter.isPresent()){
            filterList = routeList.stream().filter(p->p.getFromCity().equalsIgnoreCase(sourceCity)).collect(Collectors.toList());
-           System.out.print("\nTo From Distance in km Travel Time Typical Airfare\n");
+           System.out.print("\nFrom To Distance in km Travel Time Typical Airfare\n");
            Consumer<Route> display = (d)->System.out.println(d);
            filterList.forEach(display);
         }
@@ -59,22 +59,19 @@ public class ArrayListRoutes{
     public void sortDirectFlights(List<Route> filterList){
 
         Comparator<Route> sort= (d1,d2)->{
-            if(d1.getFromCity().compareTo(d2.getFromCity())>0)
+            if(d1.getToCity().compareTo(d2.getToCity())>0)
                 return 1;
             else
                 return -1;
 
         };
 
-        List<Route> sortedList = filterList.stream().sorted(sort).collect(Collectors.toList());
-        System.out.print("\nTo From Distance in km Travel Time Typical Airfare\n");
-        sortedList.forEach(i->System.out.println(i));
+        System.out.print("\nFrom To Distance in km Travel Time Typical Airfare\n");
+        filterList.stream().sorted(sort).forEach(i->System.out.println(i));
 
     }
 
     public void showAllConnections(String sourceCity, String distinationCity){
-
-        
 
     }
 }
